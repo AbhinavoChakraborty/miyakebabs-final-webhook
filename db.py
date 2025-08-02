@@ -129,6 +129,7 @@ def insert_data(payload: WebhookPayload):
                 ) VALUES (
                     %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s
                 )
+                ON CONFLICT DO NOTHING
             """, (
                 item.itemid,
                 order.orderID,
@@ -151,6 +152,7 @@ def insert_data(payload: WebhookPayload):
                         addon_id, itemid, group_name, name, price, quantity,
                         sap_code, addon_group_id
                     ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+                    ON CONFLICT DO NOTHING
                 """, (
                     addon.addon_id,
                     item.itemid,
